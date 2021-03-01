@@ -14,7 +14,7 @@ include 'includes/sidebar.php';
 <div class="container" id="page-content-wrapper">
     <button class="btn btn-primary" data-toggle="collapse" data-target="#sidebar-wrapper">Toggle Sidebar</button>
 
-    <h1>WELCOME!!!!</h1>
+    <h1>WELCOME to GEN Z!!!!</h1>
 
 </div>
 
