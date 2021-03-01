@@ -22,22 +22,12 @@ session_start();
   </div>');
   }
   else{
-//     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-//   <strong>Success!</strong>Connection Successful.
-//   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-//     <span aria-hidden="true">&times;</span>
-//   </button>
-// </div>';
+
   }
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
-  //   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  //   <strong>Success!</strong> Your email ' . $email . ' and Password ' . $password . ' have been submitted successfully.
-  //   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  //     <span aria-hidden="true">&times;</span>
-  //   </button>
-  // </div>';
+ 
   
   $verifyemail = "SELECT * FROM `users` WHERE email='$email'";
   $query = mysqli_query($conn, $verifyemail);
@@ -67,7 +57,7 @@ session_start();
   ?>
   <!-- Login Section below -->
   <div style = "height:79vh">
-  <div class = "shadow-lg bg-white rounder" style= "margin:auto; margin-top:25px;margin-bottom: 40px;width: 40%; display: flex; height:300px; padding: 0;">
+  <div class = "shadow-lg bg-white rounder" style= "margin:auto; margin-top:25px;margin-bottom: 40px;width: 40%; display: flex; height:350px; padding: 0;">
   <div class="container">
   <form action="login.php" method="post" class="mt-2" id="form">
   <p  class="text-success" style="font-weight:bold">

@@ -1,11 +1,5 @@
 <body>
-<!-- <div class="row">
-		<div class="col-sm-12">
-			<div class="well">
-				<center><h1 style="color: white;">Social Networking Site</h1></center>
-			</div>
-		</div>
-	</div> -->
+
 
 <?php
 include 'includes/header.php';
