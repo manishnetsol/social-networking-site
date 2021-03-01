@@ -26,7 +26,7 @@ if(isset($_GET['token']))
     $submittime=time();
     $startTime = $_SESSION['starttime'];
     $timetaken = $submittime - $startTime;
-    if($timetaken <=60)
+    if($timetaken <=600)
     {
 
         $updatestatus= "UPDATE `users` SET active='1' where token ='$tokennew'";

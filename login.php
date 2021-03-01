@@ -44,9 +44,10 @@ session_start();
   $count = mysqli_num_rows($query);
 
   if($count==1){
-    $_SESSION['email']= $email;
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    if(password_verify($password, $hashed_password))
+    $email_pass=mysqli_fetch_assoc($query);
+    $dbpass =$email_pass['password'];
+    $db_verify= password_verify($password,$dbpass);
+    if($db_verify)
     {
       echo "login Succcess";
       header('Location: home.php');
@@ -54,6 +55,7 @@ session_start();
     }
     else{
       echo "password incorrect";
+
     }
   } 
   else{

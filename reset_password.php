@@ -10,7 +10,7 @@ include 'includes/header.php';
    $resetpasstime=time();
    $resetTime = $_SESSION['resettime'];
    $timetaken1 = $resetpasstime - $resetTime;
-   if($timetaken1<=30)
+   if($timetaken1<=300)
    {
     if ($_SERVER['REQUEST_METHOD']=='POST')  
     {
