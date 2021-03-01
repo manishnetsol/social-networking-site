@@ -1,5 +1,6 @@
 <?php
   include 'includes/header.php';
+  session_start();
   ?>
 <body>
  
@@ -42,7 +43,8 @@
     $last_name = $_POST['lastname'];
     $password= $_POST['pwd'];
     $dob = $_POST['dob'];
-    $country= $_POST['country'];;
+    $country= $_POST['country'];
+    $token = bin2hex(random_bytes(15));
     // $active = 1;
     
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -50,18 +52,18 @@
     $num = mysqli_query($conn, $query);
     $num_rows = mysqli_num_rows($num);
     $form_posted = True;
-    $date2=date("Y-m-d");//today's date
+    // $date2=date("Y-m-d");//today's date
 
-   $date1=new DateTime($dob);
-   $date2=new DateTime($date2);
+  //  $date1=new DateTime($dob);
+  //  $date2=new DateTime($date2);
 
-   $interval =date_diff($date2,$date1);
+  //  $interval =date_diff($date2,$date1);
 
-   $myage= $interval->Y;
+  //  $myage= $interval->Y;
 
-   if(!$myage >= 13){ 
-    echo "Invalid age";
-  } 
+  //  if(!$myage >= 13){ 
+  //   echo "Invalid age";
+  //} 
   
 
     if(!empty(trim($_POST["username"]))){
@@ -95,11 +97,24 @@
       
   if($valid_email && $valid_firstname && $valid_pwd_length && $valid_pwd_match && $valid_user_empty && $valid_user_unique && $valid_pwd){
 
-    $sql = "INSERT INTO users (username,password,email,first_name,last_name,gender,dob,country)
-    values('$username','$hashed_password','$email','$first_name','$last_name','$gender','$dob','$country') ";
+    $sql = "INSERT INTO users (username,password,email,first_name,last_name,gender,dob,country,token)
+    values('$username','$hashed_password','$email','$first_name','$last_name','$gender','$dob','$country','$token') ";
     $result = mysqli_query($conn, $sql);
-    if($result){
-      header("Location: login.php");
+    if($result)
+    {
+            $to_email = $email;
+            $subject = "Email Activation";
+            $body = "Hi, $username. Click  Here to  Activate your account     
+            http://localhost/social-networking-site/activate.php?token=$token";
+            $sender = "From: codermailtosent@gmail.com";
+
+            if (mail($to_email, $subject, $body, $sender)) {
+                  $_SESSION['msg'] = "Check your mail to activate your account $email";
+                  $_SESSION['starttime']=time();
+                  header('location:login.php');
+            } else {
+                echo "Email sending failed                  ...";
+            }
     }
     else{
     echo "Error:".$sql;

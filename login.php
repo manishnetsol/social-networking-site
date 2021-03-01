@@ -1,4 +1,5 @@
 <?php
+session_start();
   include 'includes/header.php';
   ?>
 <body>
@@ -66,7 +67,16 @@
   <div style = "height:79vh">
   <div class = "shadow-lg bg-white rounder" style= "margin:auto; margin-top:25px;margin-bottom: 40px;width: 40%; display: flex; height:300px; padding: 0;">
   <div class="container">
-  <form action="login.php" method="post" class="mt-5" id="form">
+  <form action="login.php" method="post" class="mt-2" id="form">
+  <p  class="text-success" style="font-weight:bold">
+      <?php
+          if(isset($_SESSION['msg']))
+              {
+                  echo $_SESSION['msg'] ; 
+              }
+                         
+      ?> 
+  </p>
     <div class="form-group">
       <label for="email">Email address</label>
       <input type="email" name="email" class="form-control" id="email">
@@ -76,6 +86,18 @@
       <input type="password" name="password" class="form-control" id="password">
     </div>
   <button type="submit" class="btn btn-primary">LOG IN</button>
+  <div class="row  my-4" style="font-size: 17px">
+    <div class="col-12" >
+      <a style="padding: 0 "href="register.php"> Don't have An Account </a>
+    </div>
+    <div class="row  ">
+      <div class="col-12">
+       <p style="margin-left:15px"> Forgot Password ?
+       <a href="recover_account.php"> Reset here </a> </p>
+     </div>
+    </div>
+  </div>
+ 
   </form>
   </div>
   </div>
