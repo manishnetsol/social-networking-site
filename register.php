@@ -52,18 +52,20 @@
     $num = mysqli_query($conn, $query);
     $num_rows = mysqli_num_rows($num);
     $form_posted = True;
-    // $date2=date("Y-m-d");//today's date
+    $date2=date("Y-m-d");
 
-  //  $date1=new DateTime($dob);
-  //  $date2=new DateTime($date2);
+   $date1=new DateTime($dob);
+   $date2=new DateTime();
 
-  //  $interval =date_diff($date2,$date1);
+   $interval =date_diff($date2,$date1);
 
-  //  $myage= $interval->Y;
+   $myage= $interval->y;
+   
 
-  //  if(!$myage >= 13){ 
-  //   echo "Invalid age";
-  //} 
+   if(!($myage >= 13)){ 
+    echo "Invalid age";
+
+  } 
   
 
     if(!empty(trim($_POST["username"]))){
@@ -158,9 +160,6 @@
        }
        if(!$valid_pwd_length && $form_posted){
         echo " <small class='form-text text-danger'>!!!pwd should contain 5 letters.</small>";
-       }
-       if(!$valid_pwd_match && $form_posted){
-        echo " <small class='form-text text-danger'>!!!pwd should match.</small>";
        }
        ?>
     </div>

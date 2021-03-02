@@ -60,7 +60,7 @@ include 'includes/header.php';
                 }
             }
 
-            else if($password1 != $confirmpass && $password1 != '' && $confirmpass != '' )
+            else if($newpassword1 != $newconfirmpass && $newpassword1 != '' && $newconfirmpass != '' )
             {
                 $_SESSION['failedpass']="Your password does not match";
                 header('location: reset_password.php');    

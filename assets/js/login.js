@@ -14,9 +14,13 @@ $(document).ready(function () {
             },
             "pwd": {
                 required: true,
+                minlength: 5
+
             },
             "confirm_password": {
                 required: true,
+                equalTo: "#pwd",
+                minlength: 5
             }
         },
         messages: {
@@ -35,7 +39,8 @@ $(document).ready(function () {
                 required: "Please, enter a password",
             },
             "confirm_password": {
-                required:" passwords should match",
+                required: "Please provide a password",
+                equalTo: "Please enter the same password as above"
             }
 
         },
