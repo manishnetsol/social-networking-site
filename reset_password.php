@@ -37,8 +37,8 @@ include 'includes/header.php';
             $tokennew = bin2hex(random_bytes(15));
             $updatetoken= "UPDATE `users` SET token='$tokennew' where token ='$token'";
             mysqli_query($conn, $updatetoken);
-            $newpassword1 = $_POST['password'];
-            $newconfirmpass=$_POST['confirmpass'];
+            $newpassword1 = $_POST['pwd'];
+            $newconfirmpass=$_POST['confirm_password'];
             $pass=password_hash($newpassword1,PASSWORD_BCRYPT);
             if($newpassword1 == $newconfirmpass && $newpassword1 != '' && $newconfirmpass != '')
             {
@@ -84,7 +84,7 @@ include 'includes/header.php';
   display: flex; height:300px; padding: 0;">
                 <div class="container mt-3">
                 <h4>Change Password</h4>
-                <form action="" method="post">   
+                <form action="" method="post" id="form">   
                  <p> 
 
                    <?php
@@ -101,12 +101,12 @@ include 'includes/header.php';
                  </p>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label mt-2">New Password</label>
-                    <input type="password" class="form-control" name ="password" id="password" required>
+                    <input type="password" class="form-control" name ="pwd" id="pwd" required>
                 </div>
                 
                 <div class="mb-3">
                     <label for="confirmpass" class="form-label">Repeat Password</label>
-                    <input type="password" class="form-control" name ="confirmpass" id="confirmpass" required>
+                    <input type="password" class="form-control" name ="confirm_password" id="confirm_password" required>
                 </div>
 
                  
@@ -120,7 +120,9 @@ include 'includes/header.php';
 
                 <?php
 include 'includes/footer.php';
+
 ?> 
+ <script src="assets/js/login.js"></script>
 
   </body>
 </html>
