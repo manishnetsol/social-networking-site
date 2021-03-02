@@ -1,5 +1,6 @@
 <?php
-session_start();
+$title = "Reset Password";
+$currentPage = 'reset_password.php';
 ob_start();
 include 'includes/header.php';
 ?>
@@ -48,27 +49,27 @@ include 'includes/header.php';
                 if($iquery)
                 {
                  
-                    $_SESSION['msg']= "Your Password Has Been Updated!";
+                    $_SESSION['msg']= $lang['RECOVER_PASSWORD_MSG'];
                     $updatequery1 ="UPDATE `users` SET `active` = '1' where `token` ='$tokennew' ";
                     mysqli_query($conn, $updatequery1);
                     header('location:login.php');
                 }
                 else
                 {
-                 $_SESSION['failedpass']="Your password is not updated";
+                 $_SESSION['failedpass']= $lang['RECOVER_FAILED_MSG'];
                   header('location: reset_password.php');
                 }
             }
 
             else if($newpassword1 != $newconfirmpass && $newpassword1 != '' && $newconfirmpass != '' )
             {
-                $_SESSION['failedpass']="Your password does not match";
+                $_SESSION['failedpass']= $lang['RECOVER_FAILED_MSG2'];
                 header('location: reset_password.php');    
             }
         }
         else
         {
-            echo "no token found";
+            echo $lang['TOKEN_NOT_FOUND'];
         }      
     }
   }
@@ -83,7 +84,7 @@ include 'includes/header.php';
   <div class = "shadow-lg bg-white rounder" style= "margin:auto; margin-top:25px;margin-bottom: 40px;width: 40%; 
   display: flex; height:300px; padding: 0;">
                 <div class="container mt-3">
-                <h4>Change Password</h4>
+                <h4><?php echo $lang['RECOVER_HEADER']; ?></h4>
                 <form action="" method="post" id="form">   
                  <p> 
 
@@ -100,17 +101,17 @@ include 'includes/header.php';
 
                  </p>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label mt-2">New Password</label>
+                    <label for="exampleInputPassword1" class="form-label mt-2"><?php echo $lang['RECOVER_PWD_NEW']; ?></label>
                     <input type="password" class="form-control" name ="pwd" id="pwd" required>
                 </div>
                 
                 <div class="mb-3">
-                    <label for="confirmpass" class="form-label">Repeat Password</label>
+                    <label for="confirmpass" class="form-label"><?php echo $lang['RECOVER_PWD_REPEAT']; ?></label>
                     <input type="password" class="form-control" name ="confirm_password" id="confirm_password" required>
                 </div>
 
                  
-                <button type="submit"  name= "submit" class="btn btn-primary">Update Password</button>
+                <button type="submit"  name= "submit" class="btn btn-primary"><?php echo $lang['RECOVER_PWD_UPDATED']; ?></button>
                 </form>
                 </div>
 

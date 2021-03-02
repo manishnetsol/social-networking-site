@@ -1,5 +1,6 @@
 <?php
-session_start();
+  $title = "Login";
+  $currentPage = 'login.php';
   include 'includes/header.php';
   ?>
 <body>
@@ -44,7 +45,7 @@ session_start();
 
     }
     else{
-      echo "password incorrect";
+      echo $lang['PASSWORD_INCORRECT'];
 
     }
   } 
@@ -70,22 +71,22 @@ session_start();
       ?> 
   </p>
     <div class="form-group">
-      <label for="email">Email address</label>
+      <label for="email"><?php echo $lang['EMAIL']; ?></label>
       <input type="email" name="email" class="form-control" id="email">
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password"><?php echo $lang['PASSWORD']; ?></label>
       <input type="password" name="password" class="form-control" id="password">
     </div>
-  <button type="submit" class="btn btn-primary">LOG IN</button>
+  <button type="submit" class="btn btn-primary"><?php echo $lang['INDEX_LOGIN']; ?></button>
   <div class="row  my-4" style="font-size: 17px">
     <div class="col-12" >
-      <a style="padding: 0 "href="register.php"> Don't have An Account </a>
+      <a style="padding: 0 "href="register.php"><?php echo $lang['NO_ACCOUNT']; ?></a>
     </div>
     <div class="row  ">
       <div class="col-12">
-       <p style="margin-left:15px"> Forgot Password ?
-       <a href="recover_account.php"> Reset here </a> </p>
+       <p style="margin-left:15px"><?php echo $lang['FORGOT_PASSWORD']; ?>
+       <a href="recover_account.php"><?php echo $lang['PASSWORD_RESET']; ?></a> </p>
      </div>
     </div>
   </div>

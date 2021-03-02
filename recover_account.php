@@ -1,5 +1,6 @@
 <?php
-session_start();
+$title = 'Recover Account';
+$currentPage = 'recover_account.php';
 include 'includes/header.php';
 ?>
 
@@ -37,7 +38,7 @@ include 'includes/header.php';
                 $username= $userdata['username'];
                 $token = $userdata['token'];
                     $to_email = $email;
-                    $subject = "Reset Password";
+                    $subject = $lang['ACCOUNT_RESET'];
                     $body = "Hi, $username. Click Here to  Reset Your Password   <br>   
                     http://localhost/social-networking-site/reset_password.php?token=$token";
                     $sender = "From: codermailtosent@gmail.com";
@@ -49,13 +50,13 @@ include 'includes/header.php';
                     } 
                     else
                     {
-                        echo "Email sending failed     ...";
+                        echo $lang['SEND_MAIL_FAILED'];
                     }
             }
             
             else
             {
-                echo "<h3> NO EMAIL FOUND </h3>";
+                echo "<h3>". $lang['SEND_MAIL_MSG'] ."</h3>";
             }
         }
      ?>
@@ -63,14 +64,14 @@ include 'includes/header.php';
   <div class = "shadow-lg bg-white rounder" style= "margin:auto; margin-top:25px;margin-bottom: 40px;width: 40%; 
   display: flex; height:200px; padding: 0;">
                 <div class="container mt-3">
-                <h4 class="text-center " >Enter email to get the recover link </h4>
+                <h4 class="text-center " ><?php echo $lang['ACCOUNT_RECOVER_EMAIL']; ?></h4>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="mb-3">
-                    <label for="email" class="form-label mt-2">Email address</label>
+                    <label for="email" class="form-label mt-2"><?php echo $lang['EMAIL']; ?></label>
                     <input type="email" class="form-control" name="email" id="email" 
                     aria-describedby="emailHelp" required>
                 </div>             
-                <button type="submit"  name= "submit" class="btn btn-primary">Send Mail</button>
+                <button type="submit"  name= "submit" class="btn btn-primary"><?php echo $lang['SEND_MAIL']; ?></button>
                 </form>
                 </div>
 

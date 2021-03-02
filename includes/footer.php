@@ -1,6 +1,6 @@
 <footer class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-<div class="mx-auto text-white">&copy; GenZ 2021</div>
+<div class="mx-auto text-white">&copy; <?php echo $lang['SITE_NAME'] . " " . $lang['YEAR']; ?></div>
 
 
 

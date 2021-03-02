@@ -1,6 +1,7 @@
 <?php
+  $title = 'Registeration';
+  $currentPage = 'register.php';
   include 'includes/header.php';
-  session_start();
   ?>
 <body>
  
@@ -105,7 +106,7 @@
     if($result)
     {
             $to_email = $email;
-            $subject = "Email Activation";
+            $subject =  $lang['ACTIVATION_SUBJECT'];
             $body = "Hi, $username. Click  Here to  Activate your account     
             http://localhost/social-networking-site/activate.php?token=$token";
             $sender = "From: codermailtosent@gmail.com";
@@ -115,7 +116,7 @@
                   $_SESSION['starttime']=time();
                   header('location:login.php');
             } else {
-                echo "Email sending failed                  ...";
+                echo $lang['SEND_MAIL_FAILED'];
             }
     }
     else{
@@ -132,63 +133,63 @@
   <form action="register.php" id= "form" method="post">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Username</label>
-      <input  type="text" class="form-control"  name="username" id="username" placeholder="username">
+      <label for="inputEmail4"><?php echo $lang['REGISTER_USERNAME']; ?></label>
+      <input  type="text" class="form-control"  name="username" id="username" placeholder="<?php echo $lang['REGISTER_USERNAME']; ?>">
       <?php if(!$valid_user_empty && $form_posted){
-        echo " <small class='form-text text-danger'>!!!Username cannot be empty.</small>";
+        echo "<small class='form-text text-danger'>". $lang['REGISTER_USERNAME_EMPTY'] ."</small>";
        }
        if(!$valid_user_unique && $form_posted){
-        echo " <small class='form-text text-danger'>!!!Username already exists.</small>";
+        echo "<small class='form-text text-danger'>". $lang['REGISTER_USERNAME_EXISTS'] ."</small>";
       }
       ?>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="Email" class="form-control" name="email" id="email" placeholder="Email">
+      <label for="inputEmail4"><?php echo $lang['REGISTER_EMAIL']; ?></label>
+      <input type="Email" class="form-control" name="email" id="email" placeholder="<?php echo $lang['REGISTER_EMAIL']; ?>">
       <?php if(!$valid_email && $form_posted){
-        echo " <small class='form-text text-danger'>!!!Email cannot be empty.</small>";
+        echo "<small class='form-text text-danger>". $lang['REGISTER_EMAIL_EMPTY'] ."</small>";
        }
        ?>
     </div>
     </div>
     <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" name ="pwd" id="pwd" placeholder="Password">
+      <label for="inputPassword4"><?php echo $lang['REGISTER_PWD']; ?></label>
+      <input type="password" class="form-control" name ="pwd" id="pwd" placeholder="<?php echo $lang['REGISTER_PWD']; ?>">
       <?php if(!$valid_pwd && $form_posted){
-        echo " <small class='form-text text-danger'>!!!pwd cannot be empty.</small>";
+        echo "<small class='form-text text-danger'>". $lang['REGISTER_PWD_EMPTY'] ."</small>";
        }
        if(!$valid_pwd_length && $form_posted){
-        echo " <small class='form-text text-danger'>!!!pwd should contain 5 letters.</small>";
+        echo "<small class='form-text text-danger'>". $lang['REGISTER_PWD_MIN'] ."</small>";
        }
        ?>
     </div>
   
   
   <div class="form-group col-md-6">
-      <label for="inputPassword4">Confirm Password</label>
-      <input type="password" class="form-control" name ="confirm_password" id="confrim_password" placeholder="Confirm Password">
+      <label for="inputPassword4"><?php echo $lang['REGISTER_PWD_REPEAT']; ?></label>
+      <input type="password" class="form-control" name ="confirm_password" id="confrim_password" placeholder="<?php echo $lang['REGISTER_PWD_REPEAT']; ?>">
       <?php
       if(!$valid_pwd_match && $form_posted){
-        echo " <small class='form-text text-danger'>!!!pwd should match.</small>";
+        echo "<small class='form-text text-danger'>". $lang['REGISTER_PWD_MATCH'] ."</small>";
        }
        ?>
     </div>
 
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Firstname</label>
-      <input type="text" class="form-control" name="firstname" id="firstname" placeholder="firstname">
+      <label for="inputEmail4"><?php echo $lang['REGISTER_FNAME']; ?></label>
+      <input type="text" class="form-control" name="firstname" id="firstname" placeholder="<?php echo $lang['REGISTER_FNAME']; ?>">
       <?php if(!$valid_firstname && $form_posted){
-        echo " <small class='form-text text-danger'>!!!Firstname cannot be empty.</small>";
+        echo "<small class='form-text text-danger'>". $lang['REGISTER_FNAME_EMPTY'] ."</small>";
        }
        ?>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Lastname</label>
-      <input type="text" class="form-control" name="lastname" id="inputEmail4" placeholder="lastname">
+      <label for="inputEmail4"><?php echo $lang['REGISTER_LNAME']; ?></label>
+      <input type="text" class="form-control" name="lastname" id="inputEmail4" placeholder="<?php echo $lang['REGISTER_LNAME']; ?>">
     </div>
   <div class="form-group col-md-6">
-    <label for="inputAddress2">Country
+    <label for="inputAddress2"><?php echo $lang['REGISTER_COUNTRY']; ?>
 </label>
     <select id="inputState7" name="country" class="form-control">
     <?php while ( $row = mysqli_fetch_array($res) ) { ?>
@@ -197,14 +198,14 @@
       </select>
   </div>
     <div class="form-group col-md-6">
-      <label for="inputCity">DOB</label>
+      <label for="inputCity"><?php echo $lang['REGISTER_DOB']; ?></label>
       <input type="Date" name="dob" class="form-control" id="inputCity">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputState">Gender</label>
+      <label for="inputState"><?php echo $lang['REGISTER_GENDER']; ?></label>
       <select id="inputState" name="gender" class="form-control">
-        <option selected  value="M">Male</option>
-        <option  value="F">Female</option>
+        <option selected  value="M"><?php echo $lang['REGISTER_GENDER_MALE']; ?></option>
+        <option  value="F"><?php echo $lang['REGISTER_GENDER_FEMALE']; ?></option>
       </select>
     
   </div>
@@ -217,7 +218,7 @@
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">SIGN UP</button>
+  <button type="submit" class="btn btn-primary"><?php echo $lang['INDEX_SIGNUP']; ?></button>
 </form>
 </div>
   </div>

@@ -2,6 +2,8 @@
 
 
 <?php
+$title = "GenZ";
+$currentPage = 'index.php';
 include 'includes/header.php';
 ?>
 
@@ -16,11 +18,11 @@ include 'includes/header.php';
 		</div>
 		<div class="col-md-5">
 			<img src="assets/images/logo.png" class="img-fluid w-75" title="Business Icon">
-			<h2><strong>See what's happening in <br> the world right now</strong></h2><br><br>
-			<h4><strong>join Us Today.</strong></h4>
+			<h4><strong><?php echo $lang['SLOGAN']; ?></strong></h4><br><br>
+			<h4><strong><?php echo $lang['INDEX_JOIN']; ?></strong></h4>
 			<form>
-			<a href="register.php" class="btn btn-info btn-lg w-75">SIGN UP</a><br><br>
-			<a href="login.php" class="btn btn-info btn-lg w-75">LOG IN</a><br><br>
+			<a href="register.php" class="btn btn-info btn-lg w-75"><?php echo $lang['INDEX_SIGNUP']; ?></a><br><br>
+			<a href="login.php" class="btn btn-info btn-lg w-75"><?php echo $lang['INDEX_LOGIN']; ?></a><br><br>
 			</form>
 		</div>
 	</div>

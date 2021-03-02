@@ -1,5 +1,6 @@
 <?php
-session_start();
+$title = 'Activate Your Account';
+$currentPage = 'activate.php';
 
 $servername = "localhost";
 $username = "root";
@@ -38,12 +39,12 @@ if(isset($_GET['token']))
             
                 if(isset($_SESSION['msg']))
                 {
-                    $_SESSION['msg'] ="Account updated Successfully";
+                    $_SESSION['msg'] = $lang['ACTIVATION_UPDATED'];
                     header('location:login.php');
                 }
                 else
                 {
-                    $_SESSION['msg'] ="you are logged out";
+                    $_SESSION['msg'] = $lang['ACCOUNT_LOGOUT'];
                     header('location:login.php');
                 }
             
@@ -51,7 +52,7 @@ if(isset($_GET['token']))
     }
     else{
         
-        $_SESSION['msg']="Link expired please reset your password to activate your account";
+        $_SESSION['msg']= $lang['ACTIVATION_EXPIRED'];
         header('location:login.php');
     }
 }
