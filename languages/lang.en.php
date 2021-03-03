@@ -67,6 +67,7 @@ $lang['REGISTER_FNAME_Empty'] = 'First Name cannot be Empty';
 $lang['REGISTER_LNAME'] = 'Last Name';
 $lang['REGISTER_COUNTRY'] = 'Country';
 $lang['REGISTER_DOB'] = 'DOB';
+$lang['REGISTER_DOB_INVALID'] = 'Age must be greater than 13';
 $lang['REGISTER_GENDER'] = 'Gender';
 $lang['REGISTER_GENDER_MALE'] = 'Male';
 $lang['REGISTER_GENDER_FEMALE'] = 'Female';

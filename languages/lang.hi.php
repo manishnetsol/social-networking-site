@@ -74,6 +74,7 @@ $lang['REGISTER_FNAME_Empty'] = 'पहला नाम रिक्त नह�
 $lang['REGISTER_LNAME'] = ' उपनाम';
 $lang['REGISTER_COUNTRY'] = ' देश';
 $lang['REGISTER_DOB'] = 'जन्म तिथि';
+$lang['REGISTER_DOB_INVALID'] = 'आयु 13 वर्ष से अधिक होनी चाहिए';
 $lang['REGISTER_GENDER'] = ' लिंग';
 $lang['REGISTER_GENDER_MALE'] = 'पुरुष';
 $lang['REGISTER_GENDER_FEMALE'] = ' महिला';
