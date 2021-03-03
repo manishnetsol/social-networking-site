@@ -1,13 +1,9 @@
 <body>
-<!-- <div class="row">
-		<div class="col-sm-12">
-			<div class="well">
-				<center><h1 style="color: white;">Social Networking Site</h1></center>
-			</div>
-		</div>
-	</div> -->
+
 
 <?php
+$title = "GenZ";
+$currentPage = 'index.php';
 include 'includes/header.php';
 ?>
 
@@ -22,11 +18,11 @@ include 'includes/header.php';
 		</div>
 		<div class="col-md-5">
 			<img src="assets/images/logo.png" class="img-fluid w-75" title="Business Icon">
-			<h2><strong>See what's happening in <br> the world right now</strong></h2><br><br>
-			<h4><strong>join Us Today.</strong></h4>
+			<h4><strong><?php echo $lang['SLOGAN']; ?></strong></h4><br><br>
+			<h4><strong><?php echo $lang['INDEX_JOIN']; ?></strong></h4>
 			<form>
-				<button id="signup" class="btn btn-info btn-lg w-75" name="signup">Sign up</button><br><br>
-				<button id="login" class="btn btn-info btn-lg w-75" name="login">Login</button><br><br>
+			<a href="register.php" class="btn btn-info btn-lg w-75"><?php echo $lang['INDEX_SIGNUP']; ?></a><br><br>
+			<a href="login.php" class="btn btn-info btn-lg w-75"><?php echo $lang['INDEX_LOGIN']; ?></a><br><br>
 			</form>
 		</div>
 	</div>

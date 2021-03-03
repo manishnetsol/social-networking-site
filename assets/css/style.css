@@ -1,6 +1,9 @@
+
 #wrapper {
     overflow-x: hidden;
  }
+
+
 
 #sidebar-wrapper {
   min-height: 100vh;
@@ -27,6 +30,37 @@
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
+.form-control{
+  display: block;
+   width: 85%;
+   height: 50%;
+   font-size: 13px;
+   background: none;
+   border: none;
+   /* -webkit-appearance: none;
+   -moz-appearance: none; */
+   border-radius: 0;
+   border-bottom: 2px solid silver;
+   padding:0;
+   border-width: 1.5px;
+   
+}
+.form-control:focus{
+   color:#495057;
+   background-color: #fff;
+   border-color:#80bdff;
+   outline:0;
+   box-shadow: none;
+}
+/* input.error {
+   border: 1px solid red;
+} */
+
+label.error {
+   font-weight: normal;
+   color: red;
+}
+
 
 @media (min-width: 768px) {
   #sidebar-wrapper {
