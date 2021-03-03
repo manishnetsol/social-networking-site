@@ -111,7 +111,7 @@ include 'includes/header.php';
                 </div>
 
                  
-                <button type="submit"  name= "submit" class="btn btn-primary"><?php echo $lang['RECOVER_PWD_UPDATED']; ?></button>
+                <button type="submit"  name= "submit" class="btn btn-primary"><?php echo $lang['RECOVER_PWD_UPDATE']; ?></button>
                 </form>
                 </div>
 
