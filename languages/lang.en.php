@@ -76,7 +76,7 @@ $lang['REGISTER_GENDER_FEMALE'] = 'Female';
 
 $lang['ACTIVATION_UPDATED'] = 'Account Updated Successfully';
 $lang['ACTIVATION_EXPIRED'] = 'Link expired, please reset your password to activate your account';
-$lang['ACTIVATION_SUBJCET'] = 'Email Activation';
+$lang['ACTIVATION_SUBJECT'] = 'Email Activation';
 // $lang['ACTIVATION_HEADER'] = "Hi $username. Click Here to Activate Your Account";
 // $lang['ACTIVATION_MSG'] = "Check your mail to activate your account for $email";
 

@@ -83,7 +83,7 @@ $lang['REGISTER_GENDER_FEMALE'] = ' महिला';
 
 $lang['ACTIVATION_UPDATED'] = 'खाता अद्यतन सफलतापूर्वक';
 $lang['ACTIVATION_EXPIRED'] = 'लिंक समाप्त हो गया है, कृपया अपना खाता सक्रिय करने के लिए अपना पासवर्ड रीसेट करें';
-$lang['ACTIVATION_SUBJCET'] = 'ईमेल सक्रियण';
+$lang['ACTIVATION_SUBJECT'] = 'ईमेल सक्रियण';
 // $lang['ACTIVATION_HEADER'] = "हाय $ उपयोगकर्ता नाम। अपना खाता सक्रिय करने के लिए यहां क्लिक करें";
 // $lang['ACTIVATION_MSG'] = "ईमेल के लिए अपने खाते को सक्रिय करने के लिए अपने मेल की जाँच करें";
 

@@ -8,15 +8,8 @@ include 'includes/header.php';
 <body>
 
 <?php
-   $resetpasstime=time();
-   $resetTime = $_SESSION['resettime'];
-   $timetaken1 = $resetpasstime - $resetTime;
-   if($timetaken1<=300)
-   {
-    if ($_SERVER['REQUEST_METHOD']=='POST')  
-    {
-            $email=$_POST['email'];
-            $servername = "localhost";
+
+           $servername = "localhost";
             $username = "root";
             $pass = "";
         // Create a Table in our Database
@@ -32,53 +25,72 @@ include 'includes/header.php';
                 </button>
                 </div>');
             }
+
+
+    if ($_SERVER['REQUEST_METHOD']=='POST')  
+    {
         if(isset($_GET['token']))
         {
             $token = $_GET['token'];
             $tokennew = bin2hex(random_bytes(15));
+
+            $verifytime = "SELECT * FROM `users` WHERE token='$token'";
+            $query = mysqli_query($conn, $verifytime);
+            $token_date=mysqli_fetch_assoc($query);
+            $dbpass =$token_date['token_date'];
+            $date1 = strtotime($dbpass);
+            $date = date('Y-m-d H:i:s');
+            $date2= strtotime($date);
+            $diff = abs($date1 - $date2);
+            $hours = floor( $diff/(60*60));
+
             $updatetoken= "UPDATE `users` SET token='$tokennew' where token ='$token'";
             mysqli_query($conn, $updatetoken);
-            $newpassword1 = $_POST['pwd'];
-            $newconfirmpass=$_POST['confirm_password'];
-            $pass=password_hash($newpassword1,PASSWORD_BCRYPT);
-            if($newpassword1 == $newconfirmpass && $newpassword1 != '' && $newconfirmpass != '')
-            {
-                $updatequery ="UPDATE `users` SET `password` ='$pass' where `token` ='$tokennew' ";
 
-                $iquery =mysqli_query($conn, $updatequery);
-                if($iquery)
+            if($hours<=1)
+            {
+                $newpassword1 = $_POST['pwd'];
+                $newconfirmpass=$_POST['confirm_password'];
+                $pass=password_hash($newpassword1,PASSWORD_BCRYPT);
+                if($newpassword1 == $newconfirmpass && $newpassword1 != '' && $newconfirmpass != '')
                 {
-                 
-                    $_SESSION['msg']= $lang['RECOVER_PASSWORD_MSG'];
-                    $updatequery1 ="UPDATE `users` SET `active` = '1' where `token` ='$tokennew' ";
-                    mysqli_query($conn, $updatequery1);
-                    header('location:login.php');
+                    $updatequery ="UPDATE `users` SET `password` ='$pass' where `token` ='$tokennew' ";
+
+                    $iquery =mysqli_query($conn, $updatequery);
+                    if($iquery)
+                    {
+                    
+                        $_SESSION['msg']= $lang['RECOVER_PASSWORD_MSG'];
+                        $updatequery1 ="UPDATE `users` SET `active` = '1' where `token` ='$tokennew' ";
+                        mysqli_query($conn, $updatequery1);
+                        header('location:login.php');
+                    }
+                    else
+                    {
+                    $_SESSION['failedpass']= $lang['RECOVER_FAILED_MSG'];
+                    header('location: reset_password.php');
+                    }
                 }
+
                 else
                 {
-                 $_SESSION['failedpass']= $lang['RECOVER_FAILED_MSG'];
-                  header('location: reset_password.php');
+                    $_SESSION['failedpass']= $lang['RECOVER_FAILED_MSG2'];
+                    header('location: reset_password.php');    
                 }
             }
-
-            else if($newpassword1 != $newconfirmpass && $newpassword1 != '' && $newconfirmpass != '' )
+            else
             {
-                $_SESSION['failedpass']= $lang['RECOVER_FAILED_MSG2'];
-                header('location: reset_password.php');    
-            }
+                $_SESSION['msg']="link expired try again connecting";
+                header('location:login.php');
+                
+            }      
         }
+  
         else
         {
             echo $lang['TOKEN_NOT_FOUND'];
-        }      
+        }
     }
-  }
-  else
-  {
-    $_SESSION['msg']="link expired try again connecting";
-    header('location:login.php');
-
-  }
 ?>
       <div style = "height:79vh">
   <div class = "shadow-lg bg-white rounder" style= "margin:auto; margin-top:25px;margin-bottom: 40px;width: 40%; 

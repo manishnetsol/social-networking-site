@@ -115,9 +115,10 @@
 
             if (mail($to_email, $subject, $body, $sender)) {
                   $_SESSION['msg'] = "Check your mail to activate your account $email";
-                  $_SESSION['starttime']=time();
+                  
                   header('location:login.php');
-            } else {
+            } else
+             {
                 echo $lang['SEND_MAIL_FAILED'];
             }
     }

@@ -45,7 +45,9 @@ include 'includes/header.php';
                     if (mail($to_email, $subject, $body, $sender)) 
                     {
                         $_SESSION['msg'] = "Check your mail to reset  your password for  $email";
-                        $_SESSION['resettime']=time();
+                        $date = date('Y-m-d H:i:s');
+                         $updateDATE = "UPDATE users SET token_date = '$date' where token ='$token'";
+                        mysqli_query($conn, $updateDATE);
                         header('location:login.php');
                     } 
                     else
