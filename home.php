@@ -18,7 +18,7 @@ if(isset($_POST['sub'])){
         echo "sdfghjgerthj";
          echo "<script>alert('Please Use 250 or less than 250 words!')</script>";
         echo "<script>window.open('home.php', '_self')</script>";
-        header('location:home.php');
+        //header('location:home.php');
     }
     else
     {
