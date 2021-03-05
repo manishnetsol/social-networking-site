@@ -35,6 +35,7 @@
   $valid_pwd = False;
   $valid_pwd_length = False;
   $valid_pwd_match = False;
+  $valid_age = False;
   
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
@@ -63,10 +64,11 @@
    $myage= $interval->y;
    
 
-   if(!($myage >= 13)){ 
-    echo "Invalid age";
+   if($myage >= 13){ 
+    $valid_age = True;
 
   } 
+
   
 
     if(!empty(trim($_POST["username"]))){
@@ -98,7 +100,7 @@
     }
     
       
-  if($valid_email && $valid_firstname && $valid_pwd_length && $valid_pwd_match && $valid_user_empty && $valid_user_unique && $valid_pwd){
+  if($valid_email && $valid_firstname && $valid_pwd_length && $valid_pwd_match && $valid_user_empty && $valid_user_unique && $valid_pwd && $valid_age){
 
     $sql = "INSERT INTO users (username,password,email,first_name,last_name,gender,dob,country,token)
     values('$username','$hashed_password','$email','$first_name','$last_name','$gender','$dob','$country','$token') ";
@@ -113,9 +115,10 @@
 
             if (mail($to_email, $subject, $body, $sender)) {
                   $_SESSION['msg'] = "Check your mail to activate your account $email";
-                  $_SESSION['starttime']=time();
+                  
                   header('location:login.php');
-            } else {
+            } else
+             {
                 echo $lang['SEND_MAIL_FAILED'];
             }
     }
@@ -200,6 +203,10 @@
     <div class="form-group col-md-6">
       <label for="inputCity"><?php echo $lang['REGISTER_DOB']; ?></label>
       <input type="Date" name="dob" class="form-control" id="inputCity">
+      <?php if(!$valid_age && $form_posted){
+      echo "<small class='form-text text-danger'>".$lang['REGISTER_DOB_INVALID']."</small>";
+      }
+      ?>
     </div>
     <div class="form-group col-md-6">
       <label for="inputState"><?php echo $lang['REGISTER_GENDER']; ?></label>

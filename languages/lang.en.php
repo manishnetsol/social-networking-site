@@ -67,6 +67,7 @@ $lang['REGISTER_FNAME_Empty'] = 'First Name cannot be Empty';
 $lang['REGISTER_LNAME'] = 'Last Name';
 $lang['REGISTER_COUNTRY'] = 'Country';
 $lang['REGISTER_DOB'] = 'DOB';
+$lang['REGISTER_DOB_INVALID'] = 'Age must be greater than 13';
 $lang['REGISTER_GENDER'] = 'Gender';
 $lang['REGISTER_GENDER_MALE'] = 'Male';
 $lang['REGISTER_GENDER_FEMALE'] = 'Female';
@@ -75,7 +76,7 @@ $lang['REGISTER_GENDER_FEMALE'] = 'Female';
 
 $lang['ACTIVATION_UPDATED'] = 'Account Updated Successfully';
 $lang['ACTIVATION_EXPIRED'] = 'Link expired, please reset your password to activate your account';
-$lang['ACTIVATION_SUBJCET'] = 'Email Activation';
+$lang['ACTIVATION_SUBJECT'] = 'Email Activation';
 // $lang['ACTIVATION_HEADER'] = "Hi $username. Click Here to Activate Your Account";
 // $lang['ACTIVATION_MSG'] = "Check your mail to activate your account for $email";
 
