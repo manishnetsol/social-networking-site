@@ -43,6 +43,7 @@
     if($db_verify)
     {
       echo "login Succcess";
+      $_SESSION['user_email'] = $email;
       header('Location: home.php');
 
     }
