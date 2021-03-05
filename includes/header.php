@@ -1,5 +1,5 @@
 <?php
-include_once './language.php';
+  include_once (dirname(__DIR__).'/language.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +12,14 @@ include_once './language.php';
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
   <link rel="stylesheet" href="assets/css/style.css">
+
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+  
+
+
+
 
 </head>
 

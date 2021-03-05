@@ -1,4 +1,6 @@
 <?php
+
+$title = "home";
 include 'includes/header.php';
 ?>
 
