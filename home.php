@@ -111,6 +111,13 @@ include 'includes/sidebar.php';
                     
                 </div>
         </div>
+        <div class="row">
+	<div class="col-sm-12">
+		<center><h2><strong>News Feed</strong></h2><br></center>
+		<?php echo get_posts(); ?>
+	</div>
+</div>
+
 </div>
 
 </div>

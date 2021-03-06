@@ -205,3 +205,17 @@ input[type="file"] {
   top: 50.5%;
   right: 5%;
 }
+#posts{
+	border: 5px solid #e6e6e6;
+	padding: 40px 50px;
+}
+#posts-img{
+	padding-top: 5px;
+	padding-right: 10px;
+	min-width: 102%;
+	max-width: 50%;
+}
+#single_posts{
+	border: 5px solid #e6e6e6;
+	padding: 40px 50px;
+}
